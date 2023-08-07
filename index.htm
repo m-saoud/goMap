@@ -1,19 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
+    <title>Google Map</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google map SErch</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="initial-scale=1.0,width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-    <h1>Google</h1>
-    <div id="mapcounter"></div>
+    <div class="container">
+        <div id="mapContainer"></div>
+        <div class="bst-sidebar flex-column left-div">
+            <div class="bst-filter">
+               <header>
+                Looking for Hotel!
+               </header>
+            </div>
+            <form action="" id="input_search" class="flex-column">
+              <header>
+                  <h1>Hotels</h1>
+                  <h3>Looking For the Best Hotel for You!</h3>
+              </header>
+              <input type="text" id="search" placeholder=" Enter the name of country" />
+              <ul id="auto_suggest_list"></ul>
+              <input type="text" id="countries_input" placeholder="Select the country">
+              <ul id="countries_list"></ul>
+              <button type="submit" id="submit" class="lis-primary-btn">Search</button>
+          </form>
+        </div>
+
+    </div>
     <script src="script.js"></script>
-    <script async
-    src="https://maps.googleapis.com/maps/api/js?&callback=initMap">
-</script>
-
-
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcghr5VKE4JyNEcKG390FbFA2r_C7vsos&callback=initMap" defer></script>
 </body>
+
 </html>
