@@ -47,26 +47,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
     <div class="container">
-      <button id="show_control">Show Control</button>
         <div id="mapContainer"></div>
         <div class="bst-sidebar flex-column left-div">
             <div class="bst-filter">
                 <form action="" id="input_search" class="flex-column">
                     <header>
-                        <h1>فنادق</h1>
+                        <h1>Hotels</h1>
                         <h2>ابحث عن الفندق المناسب لك</h2>
                     </header>
                     <input type="text" id="search" placeholder="ادخل اسم الدولة" />
                     <ul id="auto_suggest_list"></ul>
-                    <input type="text" id="languages_input" placeholder="اختر الدولة">
-                    <ul id="languages_list"></ul>
-                    <button type="submit" id="submit" class="lis-primary-btn">بحث</button>
+                    <input type="text" id="countries_list" placeholder="اختر الدولة">
+                    <ul id="countries_list"></ul>
+                    <button type="submit" id="submit" class="lis-primary-btn">Search</button>
                 </form>
             </div>
 
