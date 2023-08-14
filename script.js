@@ -1,24 +1,35 @@
 // GOOGLE MAPS
-let map, bounds;
+
+let map, bounds, showControl;
 const API = "c3926d7198msh7f865f753f0716bp1348e9jsn75c8521a48ba";
 const init_center = { lat: 35.689487, lng: 139.691711 };
+let disableDefaultUI = true;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("mapContainer"), {
     center: init_center,
     zoom: 11,
-    disableDefaultUI: true,
+    disableDefaultUI,
   });
+
   bounds = new google.maps.LatLngBounds();
+
+  showControl = document.getElementById("show_control");
+  showControl.addEventListener("click", function () {
+    disableDefaultUI = false;
+    console.log("showControl");
+  });
 }
+
 window.initMap = initMap;
 
 const fetchCountry = async () => {
-  const url = "https://wft-geo-db.p.rapidapi.com/v1/geo/countries?limit=10&offset=40";
+  const url =
+    "https://wft-geo-db.p.rapidapi.com/v1/geo/countries?limit=10&offset=40";
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "c3926d7198msh7f865f753f0716bp1348e9jsn75c8521a48ba",
+      "X-RapidAPI-Key": API,
       "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
     },
   };
@@ -26,11 +37,26 @@ const fetchCountry = async () => {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
-      return result
+    return result;
   } catch (error) {
     console.error(error);
   }
 };
+
+//LOADING THE COUNTRIES
+(async function loadingContries() {
+  const countries = await fetchCountry();
+
+  const countryList = document.getElementById("#countries_list");
+
+  for (let i = 0; i < countries.length; i++) {
+    console.log(countries[i].data);     
+
+    countryList.innerHTML += `<li>${countries[i]}</li>`;
+  }
+})();
+
+//----------------------------------------------------------------------------
 
 const fetchHotels = async () => {
   const url = "https://hotels4.p.rapidapi.com/v2/get-meta-data";
@@ -45,21 +71,9 @@ const fetchHotels = async () => {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
-    return result
+    return result;
   } catch (error) {
     console.error(error);
   }
 };
-// fetchHotels();
-(async function loadingContries() {
-  const countries = await fetchCountry();
-  const countryList = document.querySelector(".countries_list");
-  
-
-  for (let i = 0; i < countries.length; i++) {
-    // countryList.innerHTML += `<li>${countries[i]}</li>`;
-    console.log(countries[i]);
-
-  }
-})();
-
+fetchHotels();
