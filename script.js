@@ -50,7 +50,7 @@ const fetchCountry = async () => {
   const countryList = document.getElementById("#countries_list");
 
   for (let i = 0; i < countries.length; i++) {
-    console.log(countries[i].data);     
+    console.log(countries[i]);     
 
     countryList.innerHTML += `<li>${countries[i]}</li>`;
   }
